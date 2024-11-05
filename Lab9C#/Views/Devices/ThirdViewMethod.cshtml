@@ -1,0 +1,29 @@
+﻿@model List<string>
+
+<h2>Групування приладів (по таблицям)</h2>
+
+@{
+    var currentModel = Model.GroupBy(x => x.Substring(0, 1));
+}
+
+@foreach (var group in currentModel)
+{
+    <table class="table" style="width:20%; border: 1px solid;">
+        <thead>
+            <tr>
+                <th class="text-center">@group.Key</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in group)
+            {
+                <tr class="text-center">
+                    <td>@item</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
